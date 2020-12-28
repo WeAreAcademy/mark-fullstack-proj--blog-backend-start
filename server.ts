@@ -21,6 +21,12 @@ const app = makeApp(pool);
 
 export default app;
 
-app.listen(process.env.PORT, () => {
-  console.log("Server is up and running!");
+
+//Start the server on the given port
+const port = process.env.PORT;
+if (!port) {
+  throw 'Missing PORT environment variable.  Set it in .env file.';
+}
+app.listen(port, () => {
+  console.log(`Server is up and running on port ${port}`);
 });
